@@ -1,2 +1,5 @@
-﻿  Main.cpp
+﻿  Game.cpp
+C:\Users\lnbre\source\repos\tetris\tetris\Game.cpp(13,2): warning C4551: faltando lista de argumentos na chamada de função
+  Main.cpp
+  Gerando Código...
   tetris.vcxproj -> C:\Users\lnbre\source\repos\tetris\x64\Debug\tetris.exe
