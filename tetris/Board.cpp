@@ -1,6 +1,8 @@
 #include "Board.h"
 #include <raylib.h>
 #include <assert.h>
+#include "raylibCpp.h"
+
 Board::Cell::Cell()
 	:
 	bExists(false),
@@ -46,7 +48,8 @@ void Board::drawCell(Vec2<int> pos) const
 {
 	assert(pos.getX() >= 0 && pos.getX() < width && pos.getY() >= 0 && pos.getY() < height);
 	Color c = cells[pos.getY() * width + pos.getX()].getColor();
-	DrawRectangle(screenX + x * cellSize + padding, screenY + y * cellSize  + padding , cellSize - padding, cellSize - padding , c);
+	Vec2<int> topLeft = screenPos + padding + (pos * cellSize);
+	raycpp::DrawRectangle(topLeft, Vec2{cellSize,cellSize} - padding, c);
 }
 
 void Board::draw() const
@@ -55,7 +58,7 @@ void Board::draw() const
 	{
 		for (int iX = 0; iX < width; iX++)
 		{
-			drawCell(iX,iY);
+			drawCell({ iX,iY });
 		}
 	}
 }

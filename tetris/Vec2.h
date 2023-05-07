@@ -12,22 +12,34 @@ public:
 		y(y)
 	{}
 
-	T getX() const  { return x };
-	T getY() const  { return y };
-	void setX(T xx) { x = xx   };
-	void setY(T yy) { y = yy   };
+	T getX() const { return x; };
+	T getY() const { return y; };
+	void setX(T xx) { x = xx; };
+	void setY(T yy) { y = yy; };
 
-	Vec2 operator+(const Vec2& rhs)
+	Vec2 operator+(const Vec2& rhs) const
 	{
 		return{ x + rhs.x, y + rhs.y };
 	}
-	Vec2 operator-(const Vec2& rhs)
+	Vec2 operator+(const int rhs) const
+	{
+		return{ x + rhs, y + rhs };
+	}
+	Vec2 operator-(const Vec2& rhs) const
 	{
 		return{ x - rhs.x, y - rhs.y };
 	}
-	Vec2 operator*(const Vec2& rhs)
+	Vec2 operator-(const int rhs) const
+	{
+		return{ x - rhs, y - rhs };
+	}
+	Vec2 operator*(const Vec2& rhs) const
 	{
 		return{ x * rhs.x, y * rhs.y };
+	}
+	Vec2 operator*(const int rhs) const
+	{
+		return{ x * rhs, y * rhs };
 	}
 	Vec2& operator+=(const Vec2& rhs)
 	{
@@ -41,11 +53,11 @@ public:
 	{
 		*this = *this * rhs;
 	}
-	bool operator==(const Vec2& rhs)
+	bool operator==(const Vec2& rhs) const 
 	{
 		return (x == rhs.x && y == rhs.y);
 	}
-	bool operator!=(const Vec2& rhs)
+	bool operator!=(const Vec2& rhs)const 
 	{
 		return !(*this == rhs);
 	}
