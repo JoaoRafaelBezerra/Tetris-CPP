@@ -1,6 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include <vector>
+#include "Vec2.h"
 
 class Board {
 private:
@@ -15,9 +16,9 @@ private:
 		Color c;
 	};
 public:
-	Board(int screenX, int screenY,int widthin,int heightin,int cellSizein,int padding);
-	void setCell(int x, int y, Color c);
-	void drawCell(int x, int y) const;
+	Board(Vec2<int> screenPos,Vec2<int> widthHeight,int cellSizein,int padding);
+	void setCell(Vec2<int> screenPos, Color c);
+	void drawCell(Vec2<int> screenPos) const;
 	void draw() const;
 private:
 	std::vector<Cell> cells;
@@ -25,8 +26,7 @@ private:
 	const int height;
 	const int cellSize;
 	const int padding;
-	int screenX;
-	int screenY;
+	Vec2<int> screenPos;
 
 };
 

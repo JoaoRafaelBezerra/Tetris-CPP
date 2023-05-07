@@ -24,10 +24,10 @@ Color Board::Cell::getColor() const
 	return c;
 }
 
-Board::Board(int screenX, int screenY, int widthin, int heightin, int cellSizein,int padding)
+Board::Board(Vec2<int> screenPos, Vec2<int> widthHeight, int cellSizein,int padding)
 	:
-	screenX(screenX), screenY(screenY),
-	width(widthin), height(heightin),
+	screenPos(screenPos),
+	width(widthHeight.getX()), height(widthHeight.getY()),
 	cellSize(cellSizein), padding(padding)
 {
 	assert(width > 0 && height > 0);//If assertion triggers: width and height are smaller than 1.
@@ -35,17 +35,17 @@ Board::Board(int screenX, int screenY, int widthin, int heightin, int cellSizein
 	cells.resize(width * height);
 }
 
-void Board::setCell(int x, int y, Color c)
+void Board::setCell(Vec2<int> pos, Color c)
 {
-	assert(x >= 0 && y >= 0 && x < width && y < height);
-	cells[y * width + x].setColor(c);
+	assert(pos.getX() >= 0 && pos.getY() >= 0 && pos.getX() < width && pos.getY() < height);
+	cells[pos.getY() * width + pos.getX()].setColor(c);
 
 }
 
-void Board::drawCell(int x, int y) const
+void Board::drawCell(Vec2<int> pos) const
 {
-	assert(x >= 0 && x < width && y >= 0 && y < height);
-	Color c = cells[y * width + x].getColor();
+	assert(pos.getX() >= 0 && pos.getX() < width && pos.getY() >= 0 && pos.getY() < height);
+	Color c = cells[pos.getY() * width + pos.getX()].getColor();
 	DrawRectangle(screenX + x * cellSize + padding, screenY + y * cellSize  + padding , cellSize - padding, cellSize - padding , c);
 }
 
