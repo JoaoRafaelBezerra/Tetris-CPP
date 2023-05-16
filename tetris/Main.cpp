@@ -1,13 +1,14 @@
 #include "raylib.h"
 #include "Game.h"
 #include "Board.h"
+#include "Settings.h"
 
 int main(void)
 {
-    const int screenWidth = 800;
-    const int screenHeight = 600;
-
-    Game game{screenWidth, screenHeight,60, "Tetris game"};
+    Game game{settings::screenWidth,
+              settings::screenHeight,
+              settings::fps,
+              "Tetris game"};
 
     while (!game.GameShouldClose()) {
         game.Tick();

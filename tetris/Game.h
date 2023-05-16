@@ -8,6 +8,7 @@ private:
 	void Draw();
 	void Update();
 	Board board;
+
 public:
 	Game(int width, int height,int fps, std::string title);
 	Game(const Game& other) = delete;
